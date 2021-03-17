@@ -1,0 +1,11 @@
+.section1,.section2{
+    border: 2px solid black;
+    overflow-y: scroll;
+    height: 500px;
+}
+.rowheight{
+    height: 500px;
+}
+.section-Header{
+    margin-top: 20px;
+}

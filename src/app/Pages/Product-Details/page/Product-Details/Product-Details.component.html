@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row section-Header">
+        <div class="col section1-Header">
+            <div>
+                <h4 style="display: inline-block;">Product list</h4>
+                <button style="display: inline-block;margin-left: 50px;" type="button" class="btn btn-primary">Add Product</button>
+            </div>
+          </div>
+          <div class="col section2-Header">
+            
+          </div>
+    </div>
+    <br/>
+    <div class="row rowheight">
+      <div class="col section1">
+          <br/>
+        <div *ngFor="let element of elements" class="card">
+            <div class="card-body">
+              <div>{{element.name}}</div>
+              <div class="element-action">
+                  <i class="bi bi-eye-fill"></i>&nbsp;
+                  <i class="bi bi-pencil-square"></i>&nbsp;
+                  <i class="bi bi-trash-fill"></i>&nbsp;
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="col section2">
+        2 of 2
+      </div>
+    </div>
+</div>
