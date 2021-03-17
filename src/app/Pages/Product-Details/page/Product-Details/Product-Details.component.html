@@ -3,7 +3,8 @@
         <div class="col section1-Header">
             <div>
                 <h4 style="display: inline-block;">Product list</h4>
-                <button style="display: inline-block;margin-left: 50px;" type="button" class="btn btn-primary">Add Product</button>
+                <button (click)="DisplayAddProduct()" style="display: inline-block;margin-left: 50px;" type="button" class="btn btn-primary">Add Product</button>
+                <div>Total items: {{TotalProducts}}</div>
             </div>
           </div>
           <div class="col section2-Header">
@@ -18,15 +19,60 @@
             <div class="card-body">
               <div>{{element.name}}</div>
               <div class="element-action">
-                  <i class="bi bi-eye-fill"></i>&nbsp;
-                  <i class="bi bi-pencil-square"></i>&nbsp;
-                  <i class="bi bi-trash-fill"></i>&nbsp;
+                  <i data-toggle="tooltip" data-placement="bottom" title="View Product" class="bi bi-eye-fill" (click)="ViewProduct(element)"></i>&nbsp;
+                  <i data-toggle="tooltip" data-placement="bottom" title="Edit Product" class="bi bi-pencil-square" (click)="EditProduct(element)"></i>&nbsp;
+                  <i data-toggle="tooltip" data-placement="bottom" title="Delete Product" class="bi bi-trash-fill" (click)="RemoveProduct(element)"></i>&nbsp;
               </div>
             </div>
           </div>
       </div>
       <div class="col section2">
-        2 of 2
+        <div *ngIf="Display == 'Add'">
+          <h4 style="display: inline-block;">Product Add</h4>
+          <hr/>
+          <form>
+            <div class="form-group">
+              <label for="ProductName">Product Name</label>
+              <input name="ProductName" [(ngModel)]="ProductName" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="ProductDescription">Product Description</label>
+              <textarea name="ProductDescription" [(ngModel)]="ProductDescription" class="form-control"></textarea>
+            </div>
+            <button (click)="AddProduct()" class="btn btn-primary">Add</button>
+          </form>
+        </div>
+        <div *ngIf="Display == 'Edit'">
+          <h4 style="display: inline-block;">Product Edit</h4>
+          <hr/>
+          <form>
+            <div class="form-group">
+              <label for="ProductName">Product Name</label>
+              <input name="ProductName" [(ngModel)]="ProductName" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="ProductDescription">Product Description</label>
+              <textarea name="ProductDescription" [(ngModel)]="ProductDescription" class="form-control"></textarea>
+            </div>
+            <button (click)="UpdateProduct()" class="btn btn-primary">Update</button>
+          </form>
+        </div>
+        <div *ngIf="Display == 'View'">
+          <h4 style="display: inline-block;">Product View</h4>
+          <hr/>
+          <form>
+            <div class="form-group">
+              <label for="ProductName">Product Name</label>
+              <input disabled name="ProductName" [(ngModel)]="ProductName" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="ProductDescription">Product Description</label>
+              <textarea disabled name="ProductDescription" [(ngModel)]="ProductDescription" class="form-control"></textarea>
+            </div>
+            <button (click)="EditProduct()" class="btn btn-primary">Edit</button>
+          </form>
+        </div>
+        <div *ngIf="Display == 'Delete'"></div>
       </div>
     </div>
 </div>
